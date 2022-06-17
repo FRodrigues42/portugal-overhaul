@@ -1,0 +1,40 @@
+POR_ideas = {
+	start = {
+		range = 0.25
+		infantry_power = 0.5
+	}
+	
+	bonus = {
+		global_tariffs = 0.20
+	}
+	
+	trigger = {
+		tag = POR
+	}
+	free = yes		#will be added at load.
+	
+	legacy_of_the_navigator = {
+		naval_morale = 0.1
+		disengagement_chance = 0.05
+	}
+	afonsine_ordinances = {
+		global_trade_goods_size_modifier = 0.1
+	}
+	case_de_india = {
+		global_trade_power = 0.1
+	}
+	land_before_faith = {
+		global_colonial_growth = 15
+	}
+	the_bandeirantes = {
+		trade_efficiency = 0.15
+	}
+	royal_absolutism = {
+		build_cost = -0.15
+		yearly_absolutism = 0.5
+	}
+	por_royal_military_academy = {
+		defensiveness = 0.1
+		artillery_fire = 1
+	}
+}
