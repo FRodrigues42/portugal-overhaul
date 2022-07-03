@@ -1,0 +1,241 @@
+po_por_first_steps_1 = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential_on_load = {
+		has_dlc = "Golden Century"
+	}
+	potential = {
+		has_dlc = "Golden Century"
+		tag = POR
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+
+}
+
+po_por_first_steps_2 = {
+	slot = 2
+	generic = no
+	ai = yes
+	potential_on_load = {
+		has_dlc = "Golden Century"
+	}
+	potential = {
+		has_dlc = "Golden Century"
+		tag = POR
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+
+}
+
+po_por_first_steps_3 = {
+	slot = 3
+	generic = no
+	ai = yes
+	potential_on_load = {
+		has_dlc = "Golden Century"
+	}
+	potential = {
+		has_dlc = "Golden Century"
+		tag = POR
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+
+	po_dom_henrique_of_portugal = {
+		icon = mission_launch_a_flagship
+		required_missions = {  }
+		position = 1
+
+		trigger = {
+			dip_tech = 4
+		}
+
+		effect = {
+			add_idea_group = exploration_ideas
+		}
+	}
+
+	#PO
+	gc_por_flagship = {
+		icon = mission_launch_a_flagship
+		required_missions = { po_dom_henrique_of_portugal }
+		position = 2
+		
+		trigger = {
+			has_flagship = yes
+		}
+		effect = {
+			add_navy_tradition = 20
+		}
+	}
+
+	#PO
+	por_discover_african_coast = {
+		icon = mission_establish_high_seas_navy
+		required_missions = { gc_por_flagship }
+		position = 3
+		completed_by = 1445.1.1
+		
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = miss_discover_west_africa
+				1469 = {
+					has_discovered = ROOT
+				}
+			}
+		}
+		
+		effect = {
+			add_prestige = 10
+			add_country_modifier = {
+				name = "the_unknown_frontier"
+				duration = 5475
+			}
+		}
+	}
+
+	po_arguin_feitoria = {
+		icon = mission_establish_high_seas_navy
+		required_missions = { }
+		position = 5
+		completed_by = 1445.6.1
+		
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = miss_discover_west_africa
+				west_africa_coast_area = {
+					has_discovered = ROOT
+				}
+			}
+		}
+		
+		effect = {
+			1111 = {
+				create_colony = 500
+				trade_goods = slaves
+				#add_province_modifier = po_the_first_feitoria
+			}
+		}
+	
+	}
+}
+
+po_por_first_steps_4 = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential_on_load = {
+		has_dlc = "Golden Century"
+	}
+	potential = {
+		 has_dlc = "Golden Century"
+		tag = POR
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+
+	gc_por_intervene_in_castile = {
+		icon = mission_intervene_in_castile
+		required_missions = { gc_por_flagship }
+		position = 3
+
+		trigger = {
+			OR = {
+				marriage_with = CAS
+				is_rival = CAS
+				NOT = { exists = CAS }
+			}
+		}
+		effect = {
+			add_dip_power = 50
+			add_prestige = 5
+			nothern_morocco_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+}
+
+po_por_first_steps_5 = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential_on_load = {
+		has_dlc = "Golden Century"
+	}
+	potential = {
+		has_dlc = "Golden Century"
+		tag = POR
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+
+	gc_por_english_alliance = {
+		icon = mission_anglo_portuguese_alliance
+		required_missions = { gc_por_flagship }
+		position = 3
+		
+		trigger = {
+			if = {
+				limit = {
+					NOT = {
+						exists = GBR
+					}
+				}
+				OR = {
+					AND = {
+						alliance_with = ENG
+						reverse_has_opinion = {
+							who = ENG
+							value = 100
+						}
+					}
+					NOT = { alliance_with = ENG }
+					NOT = { exists = ENG }
+				}
+			}
+			else = {
+				OR = {
+					AND = {
+						alliance_with = GBR
+						reverse_has_opinion = {
+							who = GBR
+							value = 100
+						}
+					}
+
+					NOT = { alliance_with = ENG }
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					alliance_with = ENG
+				}
+				ENG = {
+					add_opinion = {
+						who = root
+						modifier = anglo_portuguese_alliance
+					}
+				}
+				hidden_effect = {
+					root = {
+						add_opinion = {
+							who = ENG
+							modifier = anglo_portuguese_alliance
+						}
+					}
+				}
+			}
+			add_prestige = 25
+		}
+	}
+}

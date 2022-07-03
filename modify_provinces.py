@@ -1,9 +1,11 @@
 import fnmatch
 import os
 
+
 PROVINCES_PATH = "base_game\provinces"
 CONTINENT_FILE = "base_game\map\continent.txt"
 MOD_PATH = "mod\provinces"
+
 
 def remove_comment(line):
     return line.lstrip().split("#", 1)[0].rstrip()
@@ -36,6 +38,7 @@ def get_province_numbers(continent_lines, continent):
             continent_provinces.extend(l.split())
 
     return continent_provinces
+
 
 def get_province_files(provinces):
     return [f for f in os.listdir(PROVINCES_PATH) if f.split("-", 1)[0].rstrip() in provinces]
