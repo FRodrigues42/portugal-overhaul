@@ -1,0 +1,23 @@
+# Province Triggered modifiers are here.
+# These are added to provinces through the add_province_triggered_modifier effect
+#
+# Effects are fully scriptable here.
+
+cape_verde_base = {
+	potential = {
+        is_city = yes
+    }
+
+	trigger = {
+    }
+
+	range = 0.1
+
+	on_activation = {
+    
+    }
+    
+    on_deactivation = {
+    
+    } 
+}
